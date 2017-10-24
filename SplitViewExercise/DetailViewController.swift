@@ -10,10 +10,19 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    var item: Item?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+        navigationItem.leftItemsSupplementBackButton = true
+        
+        if let detailItem = self.item{
+            navigationItem.title = detailItem.title
+            view.backgroundColor = detailItem.color
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
