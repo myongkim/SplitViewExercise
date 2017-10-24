@@ -60,7 +60,7 @@
                             <outlet property="delegate" destination="M3v-I0-4D6" id="nhp-dN-tJY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="CZ3-At-e5f"/>
+                    <navigationItem key="navigationItem" title="Background Color" id="CZ3-At-e5f"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IcC-rr-E2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

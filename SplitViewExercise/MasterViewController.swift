@@ -10,14 +10,18 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
+    var items = [Item]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        items.append(Item(title:"Black", color: UIColor.black))
+        items.append(Item(title:"Gray", color: UIColor.gray))
+        items.append(Item(title:"Yellow", color: UIColor.yellow))
+        items.append(Item(title:"Purple", color: UIColor.purple))
+        items.append(Item(title:"Green", color: UIColor.green))
+        items.append(Item(title:"Blue", color: UIColor.blue))
+        items.append(Item(title:"Brown", color: UIColor.brown))
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,23 +33,33 @@ class MasterViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return items.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        cell.textLabel?.text = items[indexPath.row].title
         return cell
     }
-    */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let item = items[indexPath.row]
+                let navigationController = segue.destination as! UINavigationController
+                let controller = navigationController.topViewController as! DetailViewController
+                controller.item = item
+            }
+        }
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
